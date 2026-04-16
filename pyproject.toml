@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "galcom-utils"
+version = "0.1.0"
+description = "Shared utility helpers for Galcom services"
+requires-python = ">=3.10"
+dependencies = [
+  "python-logging-loki>=0.3.1",
+  "redis>=4.0.0",
+  "rx>=3.0.0",
+  "python-socketio>=5.0.0",
+  "pyserial>=3.5",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["galcom_utils*"]
