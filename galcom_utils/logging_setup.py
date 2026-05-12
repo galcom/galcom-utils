@@ -34,10 +34,10 @@ def get_and_config_logger(name):
     return logger
 
 
-def update_loki_tags(bridge_id):
+def update_loki_tags(**kwargs):
     global _loki_tags
     if _loki_tags is not None:
-        _loki_tags["bridge_id"] = bridge_id
+        _loki_tags.update(kwargs)
 
 
 def add_loki_logger(name, logger, formatter):
