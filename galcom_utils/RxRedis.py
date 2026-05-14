@@ -32,7 +32,10 @@ class RxRedis:
         try:
             self.connecting = True
             logger.debug(f"connecting to redis at {self.hostname}:{self.port}...")
-            self.server = await redis.from_url(f"redis://{self.hostname}",port=int(self.port),db=0)
+            self.server = await asyncio.wait_for(
+                redis.from_url(f"redis://{self.hostname}",port=int(self.port),db=0),
+                timeout=30
+            )
             self.pubsub = self.server.pubsub()
             await self.pubsub.subscribe("events")
             self.failure_count = 0

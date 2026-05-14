@@ -50,7 +50,6 @@ def add_loki_logger(name, logger, formatter):
     _loki_tags = {
         "application": name,
         "hostname": socket.gethostname(),
-        "bridge_id": "unset",
     }
 
     if not _is_loki_url_reachable(LOKI_URL):
